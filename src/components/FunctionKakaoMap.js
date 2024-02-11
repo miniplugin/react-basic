@@ -38,7 +38,7 @@ function KakaoMap(props) {
         return arr;
     } 
 	var getData = () => {
-		var url = 'http://localhost:4000/openapi/getdata?keyword='+keyword+'&pageNo='+pageNo;
+		var url = 'https://server-basic-fekuw.run.goorm.io/openapi/getdata?keyword='+keyword+'&pageNo='+pageNo;
 		fetch (url, {method:'get'})
 			.then (response => response.json()) //응답데이터를 json 형태로 변환
 			.then (contents => { //json으로 변환된 응답데이터인 contents 를 가지고 구현하는 내용

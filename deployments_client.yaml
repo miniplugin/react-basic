@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-map
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-map
+  template:
+    metadata:
+      labels:
+        app: react-map
+    spec:
+      containers:
+        - name: react-map
+          image: kimilguk/react-map
+          imagePullPolicy: Always
+          ports:
+            - name: react-map
+              hostPort: 3000
+              containerPort: 80
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata: #https://whchoi98.gitbook.io/k8s/eks-1/nodeport
+  name: react-map
+spec:
+  type: NodePort
+  ports:
+    - name: react-map
+      port: 80
+      nodePort: 30182
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: react-map
