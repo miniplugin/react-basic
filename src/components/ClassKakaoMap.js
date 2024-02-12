@@ -53,12 +53,13 @@ class KakaoMap extends Component {
         this.state.keyword = e.target.value;//js처리
     }
     getData() { // 지도 데이터 처리 + 출력
-    var url = 'https://server-basic-fekuw.run.goorm.io/openapi/getdata?keyword='+this.state.keyword+'&pageNo='+this.state.pageNo;;
+    var url = 'http://edu19.dothome.co.kr/openapi/getdata.php?keyword='+this.state.keyword+'&pageNo='+this.state.pageNo;
+	//var url = 'http://playpark-cp.k-paas.org:30181/openapi/getdata?keyword='+this.state.keyword+'&pageNo='+this.state.pageNo;
     fetch (url, {method:'get'})
         .then (response => response.json()) //응답데이터를 json 형태로 변환
         .then (contents => { //json으로 변환된 응답데이터인 contents 를 가지고 구현하는 내용
             //this.state.totalCount = contents['response']['body']['totalCount']['_text'];//js처리
-            this.setState({totalCount:  contents['response']['body']['totalCount']['_text']});//화면처리
+            this.setState({totalCount:  contents['response']['body']['totalCount']});//화면처리 //php용 제거 ['_text']
             var positions = [];//배열 선언
             var jsonData;
             jsonData=contents['response']['body']['items'];
@@ -66,17 +67,17 @@ class KakaoMap extends Component {
             jsonData['item'].forEach((element) => {//람다식 사용 function(element) {}
                 positions.push(
                   {
-                    content: "<div>"+element["csNm"]['_text']+"</div>",//충전소 이름
-                    latlng: new kakao.maps.LatLng(element["lat"]['_text'], element["longi"]['_text']) // 위도(latitude), 경도longitude)
+                    content: "<div>"+element["csNm"]+"</div>",//충전소 이름 //php용 제거 ['_text']
+                    latlng: new kakao.maps.LatLng(element["lat"], element["longi"]) // 위도(latitude), 경도longitude) //php용 제거 ['_text']
                   }
                 );
             });
             var index = parseInt(positions.length/2);//배열은 인덱스순서 값을 필수로 가지고, 여기서는 반환 값의 개수로 구한다.
-            console.log(jsonData["item"][index]["lat"]['_text']);
+            console.log(jsonData["item"][index]["lat"]); //php용 제거 ['_text']
             //console.log(jsonData);
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
                 mapOption = { 
-                    center: new kakao.maps.LatLng(jsonData["item"][index]["lat"]['_text'], jsonData["item"][index]["longi"]['_text']),
+                    center: new kakao.maps.LatLng(jsonData["item"][index]["lat"], jsonData["item"][index]["longi"]),//php용 제거 ['_text']
                     //center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
                     level: 10 // 지도의 확대 레벨
                 };

@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - name: express-server
-              hostPort: 80
+              hostPort: 4000
               containerPort: 4000
               protocol: TCP
 ---
@@ -32,7 +32,7 @@ spec:
     - name: express-server
       port: 4000
       nodePort: 30181
-      targetPort: 80
+      targetPort: 4000
       protocol: TCP
   selector:
     app: express-server
