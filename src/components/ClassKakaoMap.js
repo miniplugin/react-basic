@@ -53,7 +53,8 @@ class KakaoMap extends Component {
         this.state.keyword = e.target.value;//js처리
     }
     getData() { // 지도 데이터 처리 + 출력
-    var url = 'http://edu19.dothome.co.kr/openapi/getdata.php?keyword='+this.state.keyword+'&pageNo='+this.state.pageNo;
+    //var url = 'http://edu19.dothome.co.kr/openapi/getdata.php?keyword='+this.state.keyword+'&pageNo='+this.state.pageNo;
+	var url = 'https://bitter-mariel-kimilguk.koyeb.app/openapi/getdata?keyword='+this.state.keyword+'&pageNo='+this.state.pageNo;
 	//var url = 'http://playpark-cp.k-paas.org:30181/openapi/getdata?keyword='+this.state.keyword+'&pageNo='+this.state.pageNo;
     fetch (url, {method:'get'})
         .then (response => response.json()) //응답데이터를 json 형태로 변환
