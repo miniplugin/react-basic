@@ -48,6 +48,7 @@ app.use('/openapi/getdata', function(req, res) {
 		그에 따른 파라미터로 현재 xml 데이터 형식인 body변수를, compact(데이터 간소화 여부), spaces(들여쓰기 포인트)를 이용하여 파싱
 		*/
 		var xmlToJson = convert.xml2json(body, {compact: true, spaces: 4});
+		res.writeHead(200, {'Content-Type':'text/plain; charset=utf-8'});//크롬에서 한글이 깨져 보일 때 추가
         res.end(xmlToJson);
 	});
 });
