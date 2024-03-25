@@ -1,8 +1,8 @@
 var express = require('express');
 var app = express();
 
-app.listen(8003, () => {
-    console.log('노드js서버 시작: ', 8003);
+app.listen(4000, () => {
+    console.log('노드js서버 시작: ', 4000);
 });
 
 app.use('/api', function(req, res) {
