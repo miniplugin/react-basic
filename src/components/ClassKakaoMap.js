@@ -59,7 +59,8 @@ class KakaoMap extends Component {
     fetch (url, {method:'get'})
         .then (response => response.json()) //응답데이터를 json 형태로 변환
         .then (contents => { //json으로 변환된 응답데이터인 contents 를 가지고 구현하는 내용
-            this.state.totalCount = contents['response']['body']['totalCount']['_text'];//js처리
+            //this.state.totalCount = contents['response']['body']['totalCount']['_text'];//js처리
+	    this.setState({totalCount:  contents['response']['body']['totalCount']['_text']});//화면처리 //php용 제거	
             //this.setState({totalCount:  contents['response']['body']['totalCount']});//화면처리 //php용 제거 ['_text']
             var positions = [];//배열 선언
             var jsonData;
