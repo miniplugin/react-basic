@@ -54,6 +54,7 @@ class BtnEventComponent extends Component {
                 <p>카운트: {this.state.count}</p>
                 <button onClick={this.clickEvent}>카운트 증가</button>
                 {nodeValue}
+                {this.props.children}{/* 노드대그 출력 시 children 내장변수사용 */}
             </div>
         );
     }

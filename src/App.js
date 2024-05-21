@@ -15,14 +15,14 @@ function App() {
   }
   return (
     <div className="App">
-      <ClassKakaoMap />
-      {/* <BtnEventComponent
+      {/* <ClassKakaoMap /> */}
+      <BtnEventComponent
         nodeValue={<h1>태그노드</h1>}
         count={state.count}
       >
         <h2>자식노드추가</h2>
       </BtnEventComponent>
-      <button onClick={resetEvent}>{state.count + 10}으로 초기화 버튼</button> */}
+      <button onClick={resetEvent}>{state.count + 10}으로 초기화 버튼</button>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>HTML 태그를 자바스크립트에서 바로 사용한다.</h1>
